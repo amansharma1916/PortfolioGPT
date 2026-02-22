@@ -1,0 +1,105 @@
+.app-shell {
+  display: flex;
+  height: 100%;
+  background: var(--bg-app);
+}
+
+.desktop-sidebar {
+  width: var(--sidebar-width);
+  flex: 0 0 var(--sidebar-width);
+  border-right: 1px solid var(--border-subtle);
+  background: var(--bg-sidebar);
+  animation: slideInDown 0.4s ease-out;
+}
+
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--bg-app);
+}
+
+.mobile-menu-button {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 40;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: slideInDown 0.4s ease-out;
+}
+
+.mobile-menu-button:hover {
+  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: scale(1.05);
+}
+
+.mobile-menu-button:active {
+  transform: scale(0.95);
+}
+
+.mobile-sidebar-overlay {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .desktop-sidebar {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    display: grid;
+    place-items: center;
+  }
+
+  .mobile-sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    display: block;
+    z-index: 50;
+    pointer-events: none;
+  }
+
+  .mobile-sidebar-overlay.open {
+    pointer-events: auto;
+  }
+
+  .mobile-overlay-backdrop {
+    position: absolute;
+    inset: 0;
+    border: none;
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-sidebar-overlay.open .mobile-overlay-backdrop {
+    opacity: 1;
+  }
+
+  .mobile-sidebar-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    max-width: 86vw;
+    height: 100%;
+    border-right: 1px solid var(--border-subtle);
+    background: var(--bg-sidebar);
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+
+  .mobile-sidebar-overlay.open .mobile-sidebar-panel {
+    transform: translateX(0);
+  }
+}

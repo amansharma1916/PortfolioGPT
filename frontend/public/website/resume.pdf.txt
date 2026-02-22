@@ -1,0 +1,3 @@
+// This is just a placeholder text file that simulates a PDF
+// In a real project, you would place an actual PDF resume file in the public directory
+// For the purposes of this demo, we'll just reference this file as if it were a real PDF

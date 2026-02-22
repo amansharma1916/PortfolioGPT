@@ -1,0 +1,200 @@
+.sidebar {
+  display: grid;
+  grid-template-rows: auto auto auto auto 1fr auto;
+  height: 100%;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 80px;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  font-weight: 700;
+  font-size: 19px;
+  animation: slideInDown 0.4s ease-out;
+}
+
+.logo-mark {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logo-mark:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.new-chat-button {
+  margin: 18px 16px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-primary);
+  border-radius: 10px;
+  padding: 14px 18px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  animation: slideInUp 0.4s ease-out 0.1s both;
+}
+
+.new-chat-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: scale(1.01);
+}
+
+.new-chat-button:active {
+  transform: scale(0.98);
+}
+
+.website-button {
+  margin: 0 16px 16px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-primary);
+  border-radius: 10px;
+  padding: 14px 18px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  animation: slideInUp 0.4s ease-out 0.125s both;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.website-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: scale(1.01);
+}
+
+.website-button:active {
+  transform: scale(0.98);
+}
+
+.search-wrapper {
+  padding: 0 16px 14px;
+  animation: slideInUp 0.4s ease-out 0.15s both;
+}
+
+.search-input {
+  width: 100%;
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  padding: 13px 16px;
+  outline: none;
+  font-size: 15px;
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.search-input:focus {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.context-list {
+  overflow-y: auto;
+  padding: 10px 12px 14px;
+}
+
+.context-section-title {
+  padding: 12px 16px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  animation: slideInUp 0.4s ease-out 0.2s both;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.context-section-title::after {
+  content: '▼';
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+.context-item {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  text-align: left;
+  padding: 14px 14px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: slideInUp 0.3s ease-out forwards;
+}
+
+.context-item:nth-child(1) { animation-delay: 0.22s; }
+.context-item:nth-child(2) { animation-delay: 0.25s; }
+.context-item:nth-child(3) { animation-delay: 0.28s; }
+
+.context-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateX(4px);
+}
+
+.context-item.active {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.sidebar-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  animation: slideInUp 0.4s ease-out 0.3s both;
+}
+
+.profile-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profile-avatar:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.08);
+}
+
+.profile-name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.profile-role {
+  margin-top: 3px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}

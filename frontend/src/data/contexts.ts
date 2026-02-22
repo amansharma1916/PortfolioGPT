@@ -1,0 +1,9 @@
+import { goTogether } from './projects/goTogether'
+import { greenAtlas } from './projects/greenAtlas'
+
+import type { PortfolioContext } from '../types/chat'
+
+export const portfolioContexts: PortfolioContext[] = [
+  goTogether,
+  greenAtlas,
+]
