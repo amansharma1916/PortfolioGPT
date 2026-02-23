@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { profile } from '../data/profile'
 import { goTogether } from '../data/projects/goTogether'
 import { fraAtlasDss } from '../data/projects/greenAtlas'
+import { chatIt } from '../data/projects/chatIt'
 import { usePortfolioChat } from '../hooks/usePortfolioChat'
 import { Composer } from './Composer.tsx'
 import { MessageList } from './MessageList.tsx'
@@ -71,7 +72,11 @@ export function ChatShell() {
         ? isProjectFollowUpsEnabled
           ? fraAtlasDss.followUpSuggestions
           : initialProjectSuggestions
-        : []
+        : activeContextId === chatIt.id
+          ? isProjectFollowUpsEnabled
+            ? chatIt.followUpSuggestions
+            : initialProjectSuggestions
+          : []
 
   const hideActionButtons = isTyping || input.trim().length > 0
 
