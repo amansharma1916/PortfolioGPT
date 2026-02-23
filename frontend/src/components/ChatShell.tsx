@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { profile } from '../data/profile'
+import { goTogether } from '../data/projects/goTogether'
 import { usePortfolioChat } from '../hooks/usePortfolioChat'
 import { Composer } from './Composer.tsx'
 import { MessageList } from './MessageList.tsx'
@@ -23,10 +24,19 @@ export function ChatShell() {
   } = usePortfolioChat()
 
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false)
+  const [isProjectFollowUpsEnabled, setIsProjectFollowUpsEnabled] = useState(false)
+
+  const initialProjectSuggestions = ['Get live link', 'Get project summary']
 
   function handleContextSelect(contextId: string) {
     selectContext(contextId)
+    setIsProjectFollowUpsEnabled(false)
     setIsMobileSidebarOpen(false)
+  }
+
+  function handleNewChat() {
+    newChat()
+    setIsProjectFollowUpsEnabled(false)
   }
 
   function handleWebsiteClick() {
@@ -34,16 +44,31 @@ export function ChatShell() {
   }
 
   async function handleSend() {
+    const content = input.trim()
     await sendMessage(input)
-  }
 
-  async function handleQuickAsk(prompt: string, openResume = false) {
-    if (openResume) {
-      window.open('/resume.pdf', '_blank', 'noopener,noreferrer')
+    if (activeContextId !== null && content) {
+      setIsProjectFollowUpsEnabled(true)
     }
-
-    await sendMessage(prompt)
   }
+
+  function handleQuickAsk(prompt: string) {
+    setInput(prompt)
+  }
+
+  function handleProjectSuggestion(suggestion: string) {
+    setInput(suggestion)
+    setIsProjectFollowUpsEnabled(true)
+  }
+
+  const projectSuggestions =
+    activeContextId === goTogether.id
+      ? isProjectFollowUpsEnabled
+        ? goTogether.followUpSuggestions
+        : initialProjectSuggestions
+      : []
+
+  const hideActionButtons = isTyping || input.trim().length > 0
 
   return (
     <div className="app-shell">
@@ -64,7 +89,7 @@ export function ChatShell() {
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}
           onContextSelect={handleContextSelect}
-          onNewChat={newChat}
+          onNewChat={handleNewChat}
           onWebsiteClick={handleWebsiteClick}
           profileImageUrl={profile.imageUrl}
           profileName={profile.name}
@@ -92,7 +117,7 @@ export function ChatShell() {
             searchQuery={searchQuery}
             onSearchChange={setSearchQuery}
             onContextSelect={handleContextSelect}
-            onNewChat={newChat}
+            onNewChat={handleNewChat}
             onWebsiteClick={handleWebsiteClick}
             profileImageUrl={profile.imageUrl}
             profileName={profile.name}
@@ -106,6 +131,11 @@ export function ChatShell() {
           messages={messages}
           isDisabled={isTyping}
           onQuickAsk={handleQuickAsk}
+          projectSuggestions={projectSuggestions}
+          onProjectSuggestion={handleProjectSuggestion}
+          showQuickActions={activeContextId === null}
+          showProjectActions={activeContextId !== null}
+          hideActionButtons={hideActionButtons}
         />
         <Composer
           value={input}

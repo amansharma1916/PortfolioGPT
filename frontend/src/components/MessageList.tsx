@@ -7,6 +7,11 @@ interface MessageListProps {
   messages: Message[]
   isDisabled?: boolean
   onQuickAsk?: (prompt: string, openResume?: boolean) => void
+  projectSuggestions?: string[]
+  onProjectSuggestion?: (suggestion: string) => void
+  showQuickActions?: boolean
+  showProjectActions?: boolean
+  hideActionButtons?: boolean
 }
 
 const quickOptions = [
@@ -25,6 +30,12 @@ interface QuickActionsProps {
   isDisabled: boolean
   onQuickAsk?: (prompt: string, openResume?: boolean) => void
   compact?: boolean
+}
+
+interface ProjectActionsProps {
+  isDisabled: boolean
+  suggestions: string[]
+  onProjectSuggestion?: (suggestion: string) => void
 }
 
 function QuickActions({
@@ -57,10 +68,45 @@ function QuickActions({
   )
 }
 
+function ProjectActions({
+  isDisabled,
+  suggestions,
+  onProjectSuggestion,
+}: ProjectActionsProps) {
+  function handleProjectSuggestion(suggestion: string) {
+    if (isDisabled || !onProjectSuggestion) {
+      return
+    }
+
+    onProjectSuggestion(suggestion)
+  }
+
+  return (
+    <div className="quick-action-grid project-action-grid">
+      {suggestions.map((suggestion) => (
+        <button
+          key={suggestion}
+          type="button"
+          className="quick-action-chip"
+          onClick={() => handleProjectSuggestion(suggestion)}
+          disabled={isDisabled}
+        >
+          {suggestion}
+        </button>
+      ))}
+    </div>
+  )
+}
+
 export function MessageList({
   messages,
   isDisabled = false,
   onQuickAsk,
+  projectSuggestions = [],
+  onProjectSuggestion,
+  showQuickActions = true,
+  showProjectActions = false,
+  hideActionButtons = false,
 }: MessageListProps) {
   const scrollRef = useRef<HTMLDivElement>(null)
 
@@ -90,7 +136,16 @@ export function MessageList({
         <div className="empty-chat-state">
           <h2 className="empty-chat-title">Ask anything about Aman</h2>
           <p className="empty-chat-subtitle">What do you have in mind?</p>
-          <QuickActions isDisabled={isDisabled} onQuickAsk={onQuickAsk} />
+          {showQuickActions && !hideActionButtons ? (
+            <QuickActions isDisabled={isDisabled} onQuickAsk={onQuickAsk} />
+          ) : null}
+          {showProjectActions && !hideActionButtons ? (
+            <ProjectActions
+              isDisabled={isDisabled}
+              suggestions={projectSuggestions}
+              onProjectSuggestion={onProjectSuggestion}
+            />
+          ) : null}
         </div>
       ) : (
         <>
@@ -114,13 +169,24 @@ export function MessageList({
               </div>
             </article>
           ))}
-          <div className="message-row quick-actions-row">
-            <QuickActions
-              isDisabled={isDisabled}
-              onQuickAsk={onQuickAsk}
-              compact
-            />
-          </div>
+          {showQuickActions && !hideActionButtons ? (
+            <div className="message-row quick-actions-row">
+              <QuickActions
+                isDisabled={isDisabled}
+                onQuickAsk={onQuickAsk}
+                compact
+              />
+            </div>
+          ) : null}
+          {showProjectActions && !hideActionButtons ? (
+            <div className="message-row quick-actions-row">
+              <ProjectActions
+                isDisabled={isDisabled}
+                suggestions={projectSuggestions}
+                onProjectSuggestion={onProjectSuggestion}
+              />
+            </div>
+          ) : null}
         </>
       )}
     </div>

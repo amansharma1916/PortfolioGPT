@@ -144,6 +144,74 @@ export function usePortfolioChat() {
     }
   }
 
+  async function sendPresetMessage(rawInput: string, assistantResponse: string) {
+    const content = rawInput.trim()
+    const response = assistantResponse.trim()
+
+    if (!content || !response || isTyping) {
+      return
+    }
+
+    const localSession = sessionRef.current
+    const userMessage: Message = { id: createId(), role: 'user', content }
+    const assistantMessageId = createId()
+
+    setInput('')
+    setMessages((prev) => [
+      ...prev,
+      userMessage,
+      { id: assistantMessageId, role: 'assistant', content: '' },
+    ])
+    setIsTyping(true)
+
+    await wait(initialResponseDelayMs)
+
+    const chunkSize = response.length > 400 ? 4 : 2
+
+    for (let index = chunkSize; index <= response.length; index += chunkSize) {
+      if (localSession !== sessionRef.current) {
+        return
+      }
+
+      const nextSlice = response.slice(0, index)
+      setMessages((prev) =>
+        prev.map((message) =>
+          message.id === assistantMessageId
+            ? { ...message, content: nextSlice }
+            : message,
+        ),
+      )
+      await wait(typingDelayMs)
+    }
+
+    if (response.length % chunkSize !== 0) {
+      setMessages((prev) =>
+        prev.map((message) =>
+          message.id === assistantMessageId
+            ? { ...message, content: response }
+            : message,
+        ),
+      )
+    }
+
+    if (localSession === sessionRef.current) {
+      setIsTyping(false)
+    }
+  }
+
+  function postAssistantMessage(content: string) {
+    const message = content.trim()
+
+    if (!message) {
+      return
+    }
+
+    sessionRef.current += 1
+    setIsTyping(false)
+    setInput('')
+    setMessages((prev) => [...prev, { id: createId(), role: 'assistant', content: message }])
+  }
+
   return {
     contexts: portfolioContexts,
     filteredContexts,
@@ -158,5 +226,7 @@ export function usePortfolioChat() {
     selectContext,
     newChat,
     sendMessage,
+    sendPresetMessage,
+    postAssistantMessage,
   }
 }
