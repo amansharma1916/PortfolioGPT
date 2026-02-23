@@ -2,6 +2,7 @@ import type { PortfolioContext } from '../types/chat'
 import { goTogetherContext } from '../data/projects/goTogether'
 import { fraAtlasDssContext } from '../data/projects/greenAtlas'
 import { chatItContext } from '../data/projects/chatIt'
+import { tshareContext } from '../data/projects/tshare'
 
 // Project registry with aliases for detection
 const projectRegistry = [
@@ -25,6 +26,10 @@ const projectRegistry = [
   {
     context: chatItContext,
     aliases: ['chatit', 'chat it', 'chat app', 'messaging app', 'chat application'],
+  },
+  {
+    context: tshareContext,
+    aliases: ['tshare', 't share', 'code sharing', 'share platform', '4 digit'],
   },
 ]
 

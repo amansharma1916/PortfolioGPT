@@ -4,6 +4,7 @@ import { profile } from '../data/profile'
 import { goTogether } from '../data/projects/goTogether'
 import { fraAtlasDss } from '../data/projects/greenAtlas'
 import { chatIt } from '../data/projects/chatIt'
+import { tshare } from '../data/projects/tshare'
 import { usePortfolioChat } from '../hooks/usePortfolioChat'
 import { Composer } from './Composer.tsx'
 import { MessageList } from './MessageList.tsx'
@@ -76,7 +77,11 @@ export function ChatShell() {
           ? isProjectFollowUpsEnabled
             ? chatIt.followUpSuggestions
             : initialProjectSuggestions
-          : []
+          : activeContextId === tshare.id
+            ? isProjectFollowUpsEnabled
+              ? tshare.followUpSuggestions
+              : initialProjectSuggestions
+            : []
 
   const hideActionButtons = isTyping || input.trim().length > 0
 
