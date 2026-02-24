@@ -4,6 +4,7 @@ import { fraAtlasDssContext } from '../data/projects/greenAtlas'
 import { chatItContext } from '../data/projects/chatIt'
 import { tshareContext } from '../data/projects/tshare'
 import { ghostMediaContext } from '../data/projects/ghostMedia'
+import { rentItContext } from '../data/projects/rentIt'
 
 // Project registry with aliases for detection
 const projectRegistry = [
@@ -35,6 +36,10 @@ const projectRegistry = [
   {
     context: ghostMediaContext,
     aliases: ['ghostmedia', 'ghost media', 'ghost mode', 'social media', 'anonymous social'],
+  },
+  {
+    context: rentItContext,
+    aliases: ['rentit', 'rent it', 'rental', 'rental platform', 'rent platform'],
   },
 ]
 

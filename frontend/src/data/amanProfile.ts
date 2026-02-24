@@ -9,6 +9,8 @@ export const amanProfile: PortfolioContext = {
   responses: {
     summary: `## Aman Sharma — Summary
 
+![Core Stack](https://skillicons.dev/icons?i=react,nodejs,express,mongodb,typescript,javascript,python)
+
 Full-stack MERN developer and B.Tech Computer Science student with hands-on experience building **production-ready web applications** using **React, Node.js, Express, and MongoDB**.
 
 Experienced in **REST API design**, **secure JWT-based authentication**, **geospatial workflows**, and **scalable frontend–backend integration**. Alongside full-stack development, I have a solid foundation in **AI/ML concepts** including regression, classification, and neural networks, with practical experience training models in Python and integrating data-driven intelligence into web applications.
@@ -16,6 +18,8 @@ Experienced in **REST API design**, **secure JWT-based authentication**, **geosp
 A strong problem-solver with good understanding of **system design, databases, and modern JavaScript frameworks**, seeking opportunities to build **impactful and intelligent software products**.`,
 
     skills: `## Skills
+
+![Skill Logos](https://skillicons.dev/icons?i=python,javascript,c,cpp,java,html,css,react,nodejs,express,mongodb,mysql,redis,git,github,vscode)
 
 ### Programming & Scripting
 - Python, JavaScript (ES6+), C, C++, Java, HTML5, CSS3
@@ -73,6 +77,7 @@ Amity University Jharkhand
     projects: `## Projects
 
 ### goTogether — Student Ride-Sharing Platform
+  ![goTogether Stack](https://skillicons.dev/icons?i=react,typescript,nodejs,express,mongodb,socketio)
 - Full-stack MERN + TypeScript platform with map-based ride discovery and booking
 - Implemented geospatial search using MongoDB GeoJSON & 2dsphere indexes
 - Integrated MapLibre GL, OpenStreetMap, and OpenRouteService for routing and distance calculation
@@ -80,6 +85,7 @@ Amity University Jharkhand
 Link: https://gotogetherv1.vercel.app/
 
 ### GreenAtlas (FRA Atlas DSS)
+  ![GreenAtlas Stack](https://skillicons.dev/icons?i=react,vite,nodejs,express,mongodb,leaflet)
 - MERN-based Decision Support System for Forest Rights Act (FRA) implementation
 - Role-based access for Super Admin, State Admin, District Admin, and Public Users
 - Integrated WebGIS mapping using Leaflet for spatial analysis and visualization
@@ -96,6 +102,8 @@ Ask for details on any project and I’ll break it down.`,
 
     aiml: `## AI / ML Background
 
+  ![AI/ML Tools](https://skillicons.dev/icons?i=python,tensorflow,pytorch,sklearn)
+
 - Strong foundation in regression, classification, and neural networks
 - Hands-on experience training and evaluating ML models using Python
 - Worked on ML-assisted financial analysis and stock fundamental evaluation
@@ -103,12 +111,15 @@ Ask for details on any project and I’ll break it down.`,
 
     contact: `## Contact
 
+  ![Connect](https://skillicons.dev/icons?i=github,gmail,linkedin)
+
 - **Name:** Aman Sharma
 - **Location:** Ranchi, Jharkhand – 835222
 - **Phone:** +91 8541029898
 - **Email:** amansharmayt19@gmail.com
 - **GitHub:** https://github.com/amansharma1916
-- **Portfolio:** https://amansharma.tech`,
+- **Portfolio:** https://amansharma.tech
+- **LinkedIn:** https://linkedin.com/in/amansharma1916`,
 
     resume: `## Resume
 

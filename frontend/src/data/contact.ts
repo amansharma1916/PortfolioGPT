@@ -11,7 +11,7 @@ export const contact: PortfolioContext = {
 
 You can connect with me through:
 
-- LinkedIn
+- LinkedIn: https://www.linkedin.com/in/amansharma1916
 - GitHub
 - Email
 

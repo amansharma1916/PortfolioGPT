@@ -6,6 +6,7 @@ import { fraAtlasDss } from '../data/projects/greenAtlas'
 import { chatIt } from '../data/projects/chatIt'
 import { tshare } from '../data/projects/tshare'
 import { ghostMedia } from '../data/projects/ghostMedia'
+import { rentIt } from '../data/projects/rentIt'
 import { usePortfolioChat } from '../hooks/usePortfolioChat'
 import { Composer } from './Composer.tsx'
 import { MessageList } from './MessageList.tsx'
@@ -86,7 +87,11 @@ export function ChatShell() {
               ? isProjectFollowUpsEnabled
                 ? ghostMedia.followUpSuggestions
                 : initialProjectSuggestions
-              : []
+              : activeContextId === rentIt.id
+                ? isProjectFollowUpsEnabled
+                  ? rentIt.followUpSuggestions
+                  : initialProjectSuggestions
+                : []
 
   const hideActionButtons = isTyping || input.trim().length > 0
 
