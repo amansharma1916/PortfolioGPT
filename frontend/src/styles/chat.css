@@ -201,6 +201,15 @@
   color: rgba(241, 241, 241, 0.96);
 }
 
+.markdown-content img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  margin: 10px auto;
+  object-fit: contain;
+}
+
 .markdown-content a {
   color: #9ec3ff;
   text-decoration: none;
