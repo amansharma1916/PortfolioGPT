@@ -5,6 +5,7 @@ import { goTogether } from '../data/projects/goTogether'
 import { fraAtlasDss } from '../data/projects/greenAtlas'
 import { chatIt } from '../data/projects/chatIt'
 import { tshare } from '../data/projects/tshare'
+import { ghostMedia } from '../data/projects/ghostMedia'
 import { usePortfolioChat } from '../hooks/usePortfolioChat'
 import { Composer } from './Composer.tsx'
 import { MessageList } from './MessageList.tsx'
@@ -81,7 +82,11 @@ export function ChatShell() {
             ? isProjectFollowUpsEnabled
               ? tshare.followUpSuggestions
               : initialProjectSuggestions
-            : []
+            : activeContextId === ghostMedia.id
+              ? isProjectFollowUpsEnabled
+                ? ghostMedia.followUpSuggestions
+                : initialProjectSuggestions
+              : []
 
   const hideActionButtons = isTyping || input.trim().length > 0
 

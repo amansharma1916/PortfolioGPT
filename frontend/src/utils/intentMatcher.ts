@@ -3,6 +3,7 @@ import { goTogetherContext } from '../data/projects/goTogether'
 import { fraAtlasDssContext } from '../data/projects/greenAtlas'
 import { chatItContext } from '../data/projects/chatIt'
 import { tshareContext } from '../data/projects/tshare'
+import { ghostMediaContext } from '../data/projects/ghostMedia'
 
 // Project registry with aliases for detection
 const projectRegistry = [
@@ -30,6 +31,10 @@ const projectRegistry = [
   {
     context: tshareContext,
     aliases: ['tshare', 't share', 'code sharing', 'share platform', '4 digit'],
+  },
+  {
+    context: ghostMediaContext,
+    aliases: ['ghostmedia', 'ghost media', 'ghost mode', 'social media', 'anonymous social'],
   },
 ]
 
