@@ -1,73 +1,98 @@
-# React + TypeScript + Vite
+# Portfolio Chat Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript portfolio assistant UI that simulates a deterministic chat experience for Aman Sharma.
 
-Currently, two official plugins are available:
+The app provides:
+- Context-based portfolio Q&A (projects, profile, skills, experience, contact)
+- Quick action prompts and project follow-up suggestions
+- Markdown-rendered assistant responses with typing simulation
+- A dedicated `/website` route that embeds the static portfolio website
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- React 19
+- TypeScript
+- Vite
+- React Router
+- React Markdown + remark-gfm
+- ESLint
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Local Development
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js 18+
+- npm
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Run in development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### Build production bundle
+
+```bash
+npm run build
+```
+
+### Preview production build locally
+
+```bash
+npm run preview
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+## App Structure
+
+```text
+frontend/
+  src/
+    components/       # Chat layout: sidebar, message list, composer
+    data/             # Portfolio context content and intent keywords
+    hooks/            # Core chat state and deterministic message flow
+    pages/            # Website iframe route
+    styles/           # App styling
+    utils/            # Intent matching and context response resolution
+    types/            # Shared TypeScript types
+```
+
+## How It Works
+
+1. User picks a project/context from the sidebar or sends a question.
+2. The app resolves matching intents using keyword rules in context data.
+3. Matching responses are combined and rendered in markdown.
+4. Assistant output is streamed character chunks for typing effect.
+5. If nothing matches, the active context fallback response is returned.
+
+This project is intentionally deterministic: there is no external LLM API call in the chat flow.
+
+## Routes
+
+- `/` → Chat interface
+- `/website` → Embedded portfolio website (`public/website/index.html`)
+
+## Deployment
+
+The project includes `vercel.json` with SPA rewrites so client-side routes work on refresh.
+
+Deploy steps:
+1. Build command: `npm run build`
+2. Output directory: `dist`
+3. Ensure SPA rewrite configuration is included (already present in `vercel.json`)
+
+## Notes
+
+- All assistant responses are sourced from local files under `src/data`.
+- Add or edit portfolio knowledge by updating corresponding context files.
