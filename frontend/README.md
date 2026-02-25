@@ -1,6 +1,27 @@
-# Portfolio Chat Frontend
+<p align="center">
+  <img src="./public/logo.svg" alt="Portfolio Chat Logo" width="90" />
+</p>
 
-A React + TypeScript portfolio assistant UI that simulates a deterministic chat experience for Aman Sharma.
+<h1 align="center">Portfolio Chat Frontend</h1>
+
+<p align="center">
+  A React + TypeScript portfolio assistant UI that simulates a deterministic chat experience for Aman Sharma.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white" alt="React 19" />
+  <img src="https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/Router-React%20Router-CA4245?logo=reactrouter&logoColor=white" alt="React Router" />
+  <img src="https://img.shields.io/badge/License-Private-555" alt="Private" />
+</p>
+
+## 
+
+<!-- <p align="center">
+  <img src="./public/aman.jpg" alt="Aman Profile" width="220" />
+  <img src="./public/website/profile.jpg" alt="Website Profile Preview" width="220" />
+</p> -->
 
 The app provides:
 - Context-based portfolio Q&A (projects, profile, skills, experience, contact)
@@ -11,12 +32,12 @@ The app provides:
 
 ## Tech Stack
 
-- React 19
-- TypeScript
-- Vite
-- React Router
-- React Markdown + remark-gfm
-- ESLint
+- ⚛️ React 19
+- 🔷 TypeScript
+- ⚡ Vite
+- 🧭 React Router
+- 📝 React Markdown + remark-gfm
+- ✅ ESLint
 
 ## Local Development
 
@@ -54,6 +75,15 @@ npm run preview
 ```bash
 npm run lint
 ```
+
+## Scripts
+
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Starts Vite dev server |
+| `npm run build` | Type-checks and builds production bundle |
+| `npm run preview` | Serves built app locally |
+| `npm run lint` | Runs ESLint checks |
 
 ## App Structure
 
