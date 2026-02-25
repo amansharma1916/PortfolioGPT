@@ -68,7 +68,6 @@ function QuickActions({
   )
 }
 
-
 function ProjectActions({
   isDisabled,
   suggestions,
