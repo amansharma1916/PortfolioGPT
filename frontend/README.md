@@ -8,7 +8,6 @@ The app provides:
 - Markdown-rendered assistant responses with typing simulation
 - A dedicated `/website` route that embeds the static portfolio website
 
-
 ## Tech Stack
 
 - React 19
